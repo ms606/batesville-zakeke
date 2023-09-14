@@ -8,6 +8,7 @@ import {
 import Selector from "./selector";
 import { DialogsRenderer } from "./dialog/Dialogs";
 import useStore from "../Store";
+//import watermarkImage from './public/watermarkImage.jpeg';
 
 // const Layout = styled.div`
 //     display: grid;
@@ -122,15 +123,28 @@ const App: FunctionComponent<{}> = () => {
                   alignItems: "center",
                   justifyContent: "center",
                   gridArea: "1 / 2 / 12 / 1",
-                  backgroundColor: "#f4f4f4",
+                  backgroundColor: "#f4f4f4"
                 }}
               >
+                <div style={{
+                  background: `url(../../watermark.jpeg) center center no-repeat`,
+                  backgroundSize: `cover`,
+                  filter:  `grayscale(100%)`,
+                  opacity: '0.1',
+                  position: 'absolute', // Add this for positioning
+                  top: '0',
+                  left: '0',
+                  width: '100%',
+                  height: '70%',
+                }}>
+
+                </div>
                 <div
                   className="ThreeDRenderer"
                   style={
                     selectedTrayPreviewOpenButton3D
                       ? { width: "60vw", height: "60vh" }
-                      : { width: "73vw", height: "73vh" }
+                      : { width: "73vw", height: "73vh"}
                   }
                 >                  
                   <ZakekeViewer />
