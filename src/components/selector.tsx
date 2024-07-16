@@ -91,7 +91,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   const swiper = useSwiper();
 
   const startInterval = (direction: string) => {
-    console.log("start swipee", swipper);
     intervalRef.current = setInterval(() => {
       switch (direction) {
         case "prev":
@@ -104,7 +103,6 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   };
 
   const stopInterval = () => {
-    console.log("stop swipee", swipper, intervalRef);
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
@@ -143,7 +141,7 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   const [rightFootStrapOption1, setRightFootStapOption1] = useState<any | null>(
     null
   );
-
+  
   const selectedGroup = groups.find((group) => group.id === selectedGroupId);
   const selectedStep = selectedGroup
     ? selectedGroup.steps.find((step) => step.id === selectedStepId)
@@ -197,11 +195,12 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
   // Open the first group and the first step when loaded
   useEffect(() => {
     if (!selectedGroup && groups.length > 0) {
-      //  console.log("items", items, "groups", groups, "product", product);
+        // console.log("items", items, "groups", groups, "product", product);
 
       selectGroup(groups[0].id);
 
       if (groups[0].steps.length > 0) selectStep(groups[0].steps[0].id);
+console.log(templates,'templates');
 
       if (templates.length > 0) setTemplate(templates[0].id);
     }
@@ -248,12 +247,18 @@ const Selector: FunctionComponent<TrayPreviewOpenButton3DProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedGroupId]);
 
+
+  // Initial template selection
+  useEffect(() => {
+    if (templates.length > 0) 
+               setTemplate(templates[0].id);
+}, [templates]);
+
   const [selectedCarouselSlide, setSelectedCarouselSlide] = useState<number>(0);
   const slidesToShow = Math.floor(window.innerWidth / 81);
 
   // const carouselClass = slides.length <= 7 ? 'small-slider' : 'large-slider';
   const handleAfterSlide = (currentSlide: any) => {
-    console.log("Now viewing slide:", currentSlide, currentSlide.typeof);
     setSelectedCarouselSlide(currentSlide);
     console.log(
       "Now SelectedCarouselSlide:",

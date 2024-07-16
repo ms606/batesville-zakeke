@@ -127,7 +127,7 @@ const App: FunctionComponent<{}> = () => {
                 }}
               >
                 <div style={{
-                  background: `url(../../watermark.jpeg) center center no-repeat`,
+                  // background: `url(../../watermark.jpeg) center center no-repeat`,
                   backgroundSize: `cover`,
                   filter:  `grayscale(100%)`,
                   opacity: '0.1',
